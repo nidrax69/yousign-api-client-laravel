@@ -16,6 +16,7 @@ class YousignApiLaravelServiceProvider extends ServiceProvider
       $this->publishes([
         __DIR__.'/config/config.php' => config_path('yousign.php'),
       ], 'config');
+      
     }
 
     /**
