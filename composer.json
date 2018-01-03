@@ -13,5 +13,8 @@
             "email": "nidraxmusic@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {"Nidrax69\\YousignApiLaravel\\": "src/"}
+    },
     "minimum-stability": "stable"
 }
