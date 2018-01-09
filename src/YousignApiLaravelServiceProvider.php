@@ -18,7 +18,7 @@ class YousignApiLaravelServiceProvider extends BaseServiceProvider
         __DIR__.'/config/config.php' => config_path('yousign.php'),
       ], 'config');
 
-      $this->mergeConfigFrom(config_path('yousign.php'), 'yousignapi.config');
+
     }
 
     /**
@@ -28,7 +28,8 @@ class YousignApiLaravelServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-
+      $this->mergeConfigFrom(config_path('yousign.php'), 'yousignapi.config');
+      
       $this->app->bind('yousignapi.laravel', function($app) {
         return new YousignApiLaravel();
       });
