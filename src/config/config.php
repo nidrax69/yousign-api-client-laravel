@@ -10,13 +10,13 @@ return array(
     *       Les signatures de cette environnement sont (bien sûr) légales.
     *
     */
-    'environment' =>  ("demo"),
+    'environment' =>  (""),
     // Votre identifiant Yousign
-    'login' => ("v.floriot@hotmail.fr"),
+    'login' => (""),
     // Votre mot de passe Yousign
-    'password' => ("babydevdu69"),
+    'password' => (""),
     // Indique si le mot de passe passé et crypté ou non (A décommenter si le mot de passe passé et crypté)
     'isEncryptedPassword' => (false),
     // clef d'api
-    'api_key' => ("TBWFBAfczix8LBUpDcnIN1UtWXWZrwPDZT7NL4Xv"),
+    'api_key' => (""),
 );

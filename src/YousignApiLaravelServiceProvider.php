@@ -34,4 +34,8 @@ class YousignApiLaravelServiceProvider extends BaseServiceProvider
         return new YousignApiLaravel();
       });
     }
+
+    public function provides() {
+      return array('yousignapi.laravel');
+    }
 }
