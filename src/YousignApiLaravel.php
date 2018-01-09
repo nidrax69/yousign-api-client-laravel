@@ -10,18 +10,18 @@ class YousignApiLaravel extends YsApi {
    */
    public function __construct(){
        parent::__construct(null);
-       $this->setLogin(config('yousignapi.config.login'));
-       if(!(config('yousignapi.config.isEncryptedPassword'))) {
-           $this->setPassword($this->encryptPassword(config('yousignapi.config.password')));
+       $this->setLogin(config('yousign.login'));
+       if(!(config('yousign.isEncryptedPassword'))) {
+           $this->setPassword($this->encryptPassword(config('yousign.password')));
        } else {
-           $this->setPassword(config('yousignapi.config.username'));
+           $this->setPassword(config('yousign.username'));
        }
-       $this->setApiKey(config('yousignapi.config.api_key'));
-       $this->setEnvironment(config('yousignapi.config.environment'));
+       $this->setApiKey(config('yousign.api_key'));
+       $this->setEnvironment(config('yousign.environment'));
 
    }
    public function test() {
-     var_dump(config('yousignapi.config.login'));
+     var_dump(config('yousign.login'));
    }
 
 }
