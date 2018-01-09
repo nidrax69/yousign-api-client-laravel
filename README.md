@@ -4,6 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/nidrax69/yousign-api-laravel/downloads)](https://packagist.org/packages/nidrax69/yousign-api-laravel)
 [![Latest Unstable Version](https://poser.pugx.org/nidrax69/yousign-api-laravel/v/unstable)](https://packagist.org/packages/nidrax69/yousign-api-laravel)
 [![License](https://poser.pugx.org/nidrax69/yousign-api-laravel/license)](https://packagist.org/packages/nidrax69/yousign-api-laravel)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D93LM77M9EWCS)
 
 It's a library for Laravel 5.5. and PHP7
 Not tested on previous version.
