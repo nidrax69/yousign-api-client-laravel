@@ -43,7 +43,7 @@ Usage
 ------------
 
 Init connection
-```bash
+```php
 use Nidrax69\YousignApiLaravel\YousignApiLaravel;
 
 class DocumentController extends Controller
