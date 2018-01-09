@@ -3,7 +3,7 @@
     "description": "Package for using YousignApi with laravel 5.x",
     "type": "library",
     "require": {
-        "nusphere/nusoap": "0.9.5",
+        "nusphere/nusoap": "0.9.6",
         "yousign/yousign-api-client": "1.3"
     },
     "license": "MIT",
