@@ -20,7 +20,7 @@ Install using composer
 
 Now require the lib
 ```bash
-composer require nidrax69/yousign-api-laravel 1.0.0
+composer require nidrax69/yousign-api-laravel
 ```
 
 Add provider in config.app
