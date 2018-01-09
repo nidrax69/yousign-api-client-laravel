@@ -6,6 +6,9 @@
         "codecasts/nusoap-php7": "0.9.6",
         "yousign/yousign-api-client": "1.4.0"
     },
+    "replace": {
+        "nusphere/nusoap": "*"
+    },
     "license": "MIT",
     "authors": [
         {
