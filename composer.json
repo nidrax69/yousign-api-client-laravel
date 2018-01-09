@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "codecasts/nusoap-php7": "0.9.6",
-        "yousign/yousign-api-client": "2.0.4"
+        "yousign/yousign-api-client": "1.4.0"
     },
     "license": "MIT",
     "authors": [
