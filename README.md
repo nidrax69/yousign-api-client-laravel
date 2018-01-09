@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/nidrax69/yousign-api-laravel/license)](https://packagist.org/packages/nidrax69/yousign-api-laravel)
 
 It's a library for Laravel 5.5.
-Not tested on previous version. 
+Not tested on previous version.
 
 Library to use YouSign API with Laravel
 Based on PHP Client : https://github.com/Yousign/yousign-api-client-php
@@ -34,7 +34,7 @@ Add provider in config.app
 ];
 ```
 
-Publish config and complete informations inside /config/yousign.php (contact YouSign to get Credentials)
+Complete informations inside /config/yousign.php (contact YouSign to get Credentials) and then 
 ```bash
 php artisan vendor:publish
 ```
