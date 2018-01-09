@@ -34,7 +34,7 @@ Add provider in config.app
 ];
 ```
 
-Complete informations inside /config/yousign.php (contact YouSign to get Credentials) and then 
+Complete informations inside /config/yousign.php (contact YouSign to get Credentials) and then
 ```bash
 php artisan vendor:publish
 ```
@@ -44,7 +44,16 @@ Usage
 
 Init connection
 ```bash
-$client = new YousignApiLaravel();
+use Nidrax69\YousignApiLaravel\YousignApiLaravel;
+
+class DocumentController extends Controller
+{
+
+  public function connexion(Request $request) {
+    $client = new YousignApiLaravel();
+    $client->connect();
+  }
+}
 ```
 
 After please report to the documentation of https://github.com/Yousign/yousign-api-client-php
