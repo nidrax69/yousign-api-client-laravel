@@ -20,13 +20,8 @@ Install using composer
 
 Now require the lib
 ```bash
-composer require nidrax69/yousign-api-laravel 1.0
+composer require nidrax69/yousign-api-laravel 1.1
 ```
-
-You will experience Warning during installation.
-I'm using a new SOAP package for php7.
-https://github.com/Yousign/yousign-api-client-php using deprecated function of PHP7 inside their depedencies
-Feel free to help me how to configure that.
 
 Add provider in config.app
 ```bash
