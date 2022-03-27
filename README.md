@@ -6,13 +6,10 @@
 [![License](https://poser.pugx.org/nidrax69/yousign-api-laravel/license)](https://packagist.org/packages/nidrax69/yousign-api-laravel)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D93LM77M9EWCS)
 
-It's a library for Laravel 5.5. and PHP7
+It's a library for Laravel 7 and PHP7
 Not tested on previous version.
 
-Library to use YouSign API with Laravel
-Based on PHP Client : https://github.com/Yousign/yousign-api-client-php
-
-Updated version of : https://github.com/wooxo/yousign-api-client-laravel
+Library to use YouSign API from doc (dev.yousign.com) with Laravel
 
 Installation
 ------------
