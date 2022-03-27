@@ -35,26 +35,65 @@ Add provider in config.app
 ];
 ```
 
-Complete informations inside /config/yousign.php (contact YouSign to get Credentials) and then
+Complete informations inside your .env file (contact YouSign to get Credentials) and then
 ```bash
-php artisan vendor:publish
+YOUSIGN_KEY=
+YOUSIGN_API_URL=
 ```
 
 Usage
 ------------
 
-Init connection
+Create Procedure with webhooks , files and members
 ```php
 use Nidrax69\YousignApiLaravel\YousignApiLaravel;
 
 class DocumentController extends Controller
 {
 
-  public function connexion(Request $request) {
+  public function sign(Request $request) {
     $client = new YousignApiLaravel();
-    $client->connect();
+
+    // see all possibilities at https://dev.yousign.com/
+    $client->setProcedureKeyValue('name', 'Yousign');
+    $client->setProcedureKeyValue('description', 'Description procedure');
+    // to set default expiration date to the signature
+    $client->setProcedureKeyValue('expiresAt', '2022-04-24');
+
+    // add webhooks 
+    // you can add different headers
+    $webhookUrl = env('API_URL') . 'yousign/';
+    $client->addWebhook('member.finished', $webhookUrl . 'signature', 'GET', array(
+        "X-Custom-Header" => $type . '-signature',
+    ));
+    $client->addWebhook('procedure.refused', $webhookUrl . 'refused', 'GET', array(
+        "X-Custom-Header" => $type . '-signature',
+    ));
+    // procedure created but not ready for signature
+    $procedure = $client->createProcedure();
+
+    // Allows you to define the content of SMS. {{code}} will be used to define the security code managed by Yousign.
+    // up to 150 characters
+    $client->addSmsContent('DIGITAL SIGNATURE - {{code}} is your security code to sign your documents.');
+
+    // add files to procedure
+    $file = $client->addFile($namefile, $document->url, $procedure['id']);
+
+    // add member to sign the documents
+    $member = $client->addMember($user->firstname, $user->lastname, $user->email, $user->phone, $procedure['id']);
+
+    // to determine the last page of your file
+    $lastPageNumber = $this->getNumPagesInPDF($document->url);
+
+    $reason = "Signed by " . $user->firstname . " " . $user->lastname . " (Yousign)";
+    
+    // to determine position see https://placeit.yousign.fr/
+    $fileObject = $client->addFileObject($file['id'], $member['id'], $position, $reason, $lastPageNumber);
+
+    // start the signature process
+    $client->launchProcedure($procedure['id']);
   }
 }
 ```
 
-After please report to the documentation of https://github.com/Yousign/yousign-api-client-php
+Find the complete integration in source file

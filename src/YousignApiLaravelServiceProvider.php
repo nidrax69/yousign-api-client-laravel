@@ -3,9 +3,9 @@
 namespace Nidrax69\YousignApiLaravel;
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class YousignApiLaravelServiceProvider extends BaseServiceProvider
+class YousignApiLaravelServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -14,9 +14,6 @@ class YousignApiLaravelServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-      $this->publishes([
-        __DIR__.'/config/config.php' => config_path('yousign.php'),
-      ]);
 
     }
 
@@ -32,7 +29,4 @@ class YousignApiLaravelServiceProvider extends BaseServiceProvider
       });
     }
 
-    public function provides() {
-      return array('yousignapi.laravel');
-    }
 }
