@@ -1,14 +1,7 @@
 {
     "name": "nidrax69/yousign-api-laravel",
-    "description": "Package for using YousignApi with laravel 5.x",
+    "description": "Package for using YousignApi with laravel > 7.x",
     "type": "library",
-    "require": {
-        "econea/nusoap": "~0.9.5.1",
-        "yousign/yousign-api-client": "1.4.0"
-    },
-    "replace": {
-        "nusphere/nusoap": "*"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -18,6 +11,16 @@
     ],
     "autoload": {
         "psr-4": {"Nidrax69\\YousignApiLaravel\\": "src/"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nidrax69\\YousignApiLaravel\\YousignApiLaravelServiceProvider"
+            ],
+            "aliases": {
+                "YousignApiLaravel": "Nidrax69\\YousignApiLaravel\\Facades\\YousignApiLaravel"
+            }
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true
