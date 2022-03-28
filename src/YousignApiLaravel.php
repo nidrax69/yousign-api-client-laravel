@@ -297,7 +297,7 @@ class YousignApiLaravel {
             $path =  $fileId . "/download";
         }
 
-        return $this->api_request($path, $method, true, true);
+        return $this->api_request($path, $method, [], true, true);
     }
 
 }
