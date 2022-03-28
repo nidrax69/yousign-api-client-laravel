@@ -118,7 +118,7 @@ class YousignApiLaravel {
         return $this->apikey;
     }
 
-    public function api_request($path, $method, $params = [], $removeSlash = false)
+    public function api_request($path, $method, $params = [], $removeSlash = false, $asBody = false)
     {
         if ($removeSlash) {
             $baseUrl = $this->baseUrlWithoutSlash;
@@ -128,7 +128,11 @@ class YousignApiLaravel {
         $response = Http::withOptions(['debug' => false])->withToken($this->getApikey())->$method($baseUrl . $path, $params);
 
         try {
-            return $response->throw()->json();
+            if ($asBody) {
+                return $response->throw()->body();
+            } else {
+                return $response->throw()->json();
+            }
         } catch (RequestException $e) {
             abort($response->status(), $response->body(), ['Content-Type: application/json']);
         }
@@ -278,6 +282,22 @@ class YousignApiLaravel {
         $path = 'consumptions/metrics';
 
         return $this->api_request($path, $method);
+    }
+
+    /**
+     *  getFileSigned
+     */
+    
+    public function fileSigned($fileId, $binaryMode = true) {
+        $method = 'GET';
+
+        if ($binaryMode) {
+            $path =  $fileId . "/download?alt=media";
+        } else{
+            $path =  $fileId . "/download";
+        }
+
+        return $this->api_request($path, $method, true, true);
     }
 
 }
