@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Psr7;
+
 class YousignApiLaravel {
 
     protected $baseUrl;
@@ -125,12 +127,42 @@ class YousignApiLaravel {
         } else {
             $baseUrl = $this->apiBaseUrl;
         }
-        $response = Http::withOptions(['debug' => false])->withToken($this->getApikey())->$method($baseUrl . $path, $params);
+
+        
 
         try {
             if ($asBody) {
-                return $response->throw()->body();
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => $baseUrl . $path,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => false,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "GET",
+                    CURLOPT_HTTPHEADER => array(
+                        "Authorization: Bearer ".$this->getApikey(),
+                        "Content-Type: application/json"
+                    ),
+                ));
+        
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+        
+                curl_close($curl);
+        
+                if ($err) {
+                    return "cURL Error #:" . $err;
+                } else {
+                    return $response;
+                }
             } else {
+                $response = Http::withOptions(['debug' => false])
+                        ->acceptJson()
+                        ->withToken($this->getApikey())
+                        ->$method($baseUrl . $path, $params);
                 return $response->throw()->json();
             }
         } catch (RequestException $e) {
